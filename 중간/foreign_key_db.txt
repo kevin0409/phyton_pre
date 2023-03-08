@@ -1,0 +1,20 @@
+create table 부서 (
+    부서번호 int,
+    부서이름 varchar(10) not null,
+    primary key(부서번호)
+);
+
+create table 사원 (  
+    사원번호 int,  
+    사원이름 varchar(10) not null,  
+    소속부서 int default 0,  
+    foreign key (소속부서) references 부서(부서번호)   
+    on delete cascade 
+    );
+
+insert into 부서 values(1, '인사부');
+insert into 부서 values(2, '연구부');
+insert into 부서 values(3, '홍보부');
+insert into 사원 values(1001, '정소화', 3);
+insert into 사원 values(1002, '김용욱', 1);
+insert into 사원 values(1003, '고명석', 2);
